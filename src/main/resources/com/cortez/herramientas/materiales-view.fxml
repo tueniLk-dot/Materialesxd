@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="718.0" prefWidth="1031.0" spacing="25.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cortez.herramientas.control.MaterialController">
+
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+    </padding>
+
+    <children>
+        <!-- Título de la sección -->
+        <Label text="Gestión de Materials" textFill="#333333">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+
+        <!-- Barra de Formulario y Acciones -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <TextField prefWidth="150.0" promptText="Ingresa ID" />
+                <TextField prefWidth="350.0" promptText="Ingresar nombre" />
+
+                <!-- Este Region empuja los botones hacia la derecha -->
+                <Region HBox.hgrow="ALWAYS" />
+                <TextField fx:id="txtNombre" promptText="Nombre" />
+                <!-- Botones de Acción -->
+                <Button mnemonicParsing="false" onMouseClicked="#handleLimpiar" prefWidth="100.0" text="Limpiar" />
+                <Button mnemonicParsing="false" onMouseClicked="#handleEliminar" prefWidth="100.0" text="Eliminar" />
+                <Button mnemonicParsing="false" onMouseClicked="#handleActualizar" prefWidth="100.0" text="Actualizar" />
+                <!-- Botón principal destacado con estilo inline simple -->
+                <Button onAction="#handleCrear" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="Crear" />
+                <TableView fx:id="tablaMateriales" onMouseClicked="#handleSeleccion" />
+            </children>
+        </HBox>
+
+        <!-- Tabla de Datos -->
+        <TableView VBox.vgrow="ALWAYS">
+            <columns>
+                <!-- Tamaños proporcionales iniciales, la tabla ajustará el resto -->
+                <TableColumn fx:id="ID" prefWidth="150.0" text="ID" />
+                <TableColumn fx:id="Nombre" prefWidth="800.0" text="Nombre" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </children>
+</VBox>
